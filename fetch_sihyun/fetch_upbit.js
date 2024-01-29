@@ -1,4 +1,4 @@
-let coinData = [];
+const coinData = [];
 const fetchData = (coinList) => {
     coinList.forEach((coin) =>
         fetch(`https://api.upbit.com/v1/ticker?markets=${coin}`)
@@ -7,7 +7,7 @@ const fetchData = (coinList) => {
             .catch((err) => console.error(err))
     );
 
-    const getCoinData = ({ ...coin }) => {
+    const getCoinData = (coin) => {
         const symbol = coin.market.slice(4);
         const change = (coin.change === "FALL" ? "-" : coin.change === "RISE" ? "+" : "")
         const tradePrice = coin.trade_price.toLocaleString();
